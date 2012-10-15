@@ -2,7 +2,7 @@ package com.versionone.git;
 
 import com.versionone.apiclient.*;
 import com.versionone.git.configuration.ProxySettings;
-import com.versionone.git.configuration.VersionOneSettings;
+import com.versionone.git.configuration.VersionOneConnection;
 import org.apache.log4j.Logger;
 
 import java.net.URI;
@@ -19,20 +19,20 @@ public class VersionOneConnector implements IVersionOneConnector {
 
     private final Logger LOG = Logger.getLogger("GitIntegration");
 
-    public void connect(VersionOneSettings connectionInfo) throws VersionOneException {
+    public void connect(VersionOneConnection connection) throws VersionOneException {
         try {
-            String path = connectionInfo.getPath();
-            ProxyProvider proxy = getProxy(connectionInfo.getProxySettings());
+            String path = connection.getPath();
+            ProxyProvider proxy = getProxy(connection.getProxySettings());
 
             V1APIConnector metaConnector = new V1APIConnector(path + META_URL_SUFFIX, proxy);
             metaModel = new MetaModel(metaConnector);
 
-            V1APIConnector localizerConnector = new V1APIConnector(path + LOCALIZER_URL_SUFFIX, connectionInfo.getUserName(),
-                    connectionInfo.getPassword(), proxy);
+            V1APIConnector localizerConnector = new V1APIConnector(path + LOCALIZER_URL_SUFFIX, connection.getUserName(),
+                    connection.getPassword(), proxy);
             localizer = new Localizer(localizerConnector);
             V1APIConnector dataConnector;
 
-            dataConnector = getDataConnector(connectionInfo);
+            dataConnector = getDataConnector(connection);
             services = new Services(metaModel, dataConnector);
             services.getLoggedIn();
             LOG.info("Connection to VersionOne server established.");
@@ -43,15 +43,15 @@ public class VersionOneConnector implements IVersionOneConnector {
         }
     }
 
-    private V1APIConnector getDataConnector(VersionOneSettings connectionInfo) {
-        String path = connectionInfo.getPath();
-        ProxyProvider proxy = getProxy(connectionInfo.getProxySettings());
+    private V1APIConnector getDataConnector(VersionOneConnection connection) {
+        String path = connection.getPath();
+        ProxyProvider proxy = getProxy(connection.getProxySettings());
         V1APIConnector dataConnector;
-        if (connectionInfo.getIntegratedAuth() != null && connectionInfo.getIntegratedAuth()) {
+        if (connection.getIntegratedAuth() != null && connection.getIntegratedAuth()) {
             dataConnector = new V1APIConnector(path + DATA_URL_SUFFIX, proxy);
         } else {
-            dataConnector = new V1APIConnector(path + DATA_URL_SUFFIX, connectionInfo.getUserName(),
-                connectionInfo.getPassword(), proxy);
+            dataConnector = new V1APIConnector(path + DATA_URL_SUFFIX, connection.getUserName(),
+                connection.getPassword(), proxy);
         }
         return dataConnector;
     }

@@ -11,13 +11,13 @@ public class ServiceHandler {
     private static final Logger LOG = Logger.getLogger("GitIntegration");
 
     public static void start(String[] arg) {
-        LOG.info("Git integration service is starting.");
+        LOG.info("Git integration service is starting...");
         LOG.info("Loading configuration...");
         Configuration configuration = Configuration.getInstance();
-        LOG.info("Configuration loaded.");
+        LOG.info("Configuration loaded successfully");
 
         try {
-            timer.scheduleAtFixedRate(new GitPollTask(configuration), 0, configuration.getTimeoutMillis());
+            timer.scheduleAtFixedRate(new GitPollTask(configuration), 0, configuration.getPollIntervalInSeconds() * 1000);
         } catch (VersionOneException ex) {
             fail(ex);
         } catch (NoSuchAlgorithmException ex) {

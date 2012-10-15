@@ -6,6 +6,10 @@ public class Main {
     private static final Logger LOG = Logger.getLogger("GitIntegration");
 
     public static void main(String[] arg) {
+
+        // TODO Add JavaDoc comments for all classes and methods in the project
+        // TODO Expand unit tests substantially
+
         ServiceHandler.start(arg);
 
         while(true) {

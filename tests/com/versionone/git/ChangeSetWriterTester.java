@@ -2,7 +2,8 @@ package com.versionone.git;
 
 import com.versionone.apiclient.*;
 import com.versionone.git.configuration.Configuration;
-import com.versionone.git.configuration.VersionOneSettings;
+import com.versionone.git.configuration.GitConnection;
+import com.versionone.git.configuration.VersionOneConnection;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -22,6 +23,9 @@ public class ChangeSetWriterTester {
       return Arrays.asList(data);
     }
 
+    private boolean useProxy;
+    private String workitemNumber = "B-01013";
+
     private Configuration config;
     private IAssetType changeSetType;
 
@@ -30,9 +34,7 @@ public class ChangeSetWriterTester {
     private final String linksAttrDef = "Links.URL";
     private final String nameAttrDef = "Name";
     private final String descriptionAttrDef = "Description";
-    
-    private final String workitemNumber;
-    private final Boolean useProxy;
+
 
     private IVersionOneConnector connector;
 
@@ -44,8 +46,9 @@ public class ChangeSetWriterTester {
     @Before
     public void before() throws VersionOneException {
         config = Configuration.getInstance(ConfigurationTester.class.getResource("test_configuration_changesetwriter.xml").getPath());
-        VersionOneSettings connectionInfo = config.getVersionOneSettings();
+        VersionOneConnection connectionInfo = config.getVersionOneConnection();
 
+        //overriding default settings from config file with test parameter
         connectionInfo.getProxySettings().setUseProxy(useProxy);
 
         connector = new VersionOneConnector();
@@ -55,7 +58,7 @@ public class ChangeSetWriterTester {
 
     @Test
     @Ignore("Integration test. Set real workitem in generateData() method.")
-    public void publish() throws VersionOneException, APIException, OidException, ConnectionException {
+    public void publishTest() throws VersionOneException, APIException, OidException, ConnectionException {
         List<String> refs = new LinkedList<String>();
         refs.add(workitemNumber);
 
@@ -63,10 +66,10 @@ public class ChangeSetWriterTester {
         cal.set(2010, 11, 1, 14, 43, 56);
         Date date = cal.getTime();
 
-        ChangeSetInfo changeSet = new ChangeSetInfo("test author", "test message",  new LinkedList<String>(),
+        ChangeSetInfo changeSet = new ChangeSetInfo(config.getGitConnections().get(0), "test author", "test message",  new LinkedList<String>(),
                 "test_revision", date, refs);
 
-        ChangeSetWriter writer = new ChangeSetWriter(config, connector, config.getGitSettings().get(0).getLink());
+        ChangeSetWriter writer = new ChangeSetWriter(config.getChangeSet(), connector);
         writer.publish(changeSet);
 
         Asset[] list = findExistingChangeset(changeSet.getRevision()).getAssets();
@@ -94,6 +97,7 @@ public class ChangeSetWriterTester {
     }
 
      private QueryResult findExistingChangeset(String revision) throws OidException, APIException, ConnectionException {
+
         FilterTerm term = new FilterTerm(changeSetType.getAttributeDefinition(referenceAttrDef));
         term.Equal(revision);
 
@@ -112,5 +116,10 @@ public class ChangeSetWriterTester {
         DateFormat dateFormatter = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
         String formattedChangeDate = dateFormatter.format(changeDate);
         return String.format("%1$s UTC%2$tz", formattedChangeDate, changeDate);
+    }
+    
+    @After
+    public void after(){
+        
     }
 }

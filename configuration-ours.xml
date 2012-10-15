@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+
+    <LocalDirectory>./temp/</LocalDirectory>
+    <PollIntervalInSeconds>300</PollIntervalInSeconds>
+
+    <VersionOneConnection>
+        <Path>http://versionone-test/gitintegration/</Path>
+        <UserName>v1.api</UserName>
+        <Password>abc123</Password>
+        <IntegratedAuth>false</IntegratedAuth>
+        <ProxySettings>
+            <UseProxy>false</UseProxy>
+            <Path>http://proxyserver:3128/</Path>
+            <UserName>proxyUser</UserName>
+            <Password>proxyUserPass</Password>
+        </ProxySettings>
+    </VersionOneConnection>
+    
+    <GitConnections>
+
+        <!-- Libraries -->
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/aspect.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/aspect.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/data/bloomberg.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/data/bloomberg.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/data/bloombergstub.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/data/bloombergstub.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/data/lim.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/data/lim.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/fieldflow.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/fieldflow.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/forwardcurves.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/forwardcurves.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/forwardcurves/model.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/forwardcurves/model.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/forwardcurves/modeldata.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/forwardcurves/modeldata.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/msbuildtasks.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/msbuildtasks.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/net.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/net.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/nlogextensions.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/nlogextensions.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/pricingschedule.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/pricingschedule.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/tasks.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/tasks.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/ui.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/ui.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/libraries/utilities.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/libraries/utilities.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:dotnet-common/tools/sql/regressiontester.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=dotnet-common/tools/sql/regressiontester.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+
+        <!-- Applications -->
+        <GitConnection>
+            <Path>git@git:aspect.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=aspect.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:aspect/adapter.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=aspect/adapter.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:aspect/reporting.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=aspect/reporting.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:deployment.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=deployment.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:econfirm.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=econfirm.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:forwardcurves.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=forwardcurves.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:krt/adapter.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=krt/adapter.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:krt/deployment.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=krt/deployment.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:krt/reconciliation.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=krt/reconciliation.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:marketmaker.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=marketmaker.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:mtmexporter.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=mtmexporter.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+        <GitConnection>
+            <Path>git@git:sql.git</Path>
+            <Link>
+                <NameTemplate>Commit {0}</NameTemplate>
+                <UrlTemplate>http://git/?p=sql.git;a=commitdiff;h={0}</UrlTemplate>
+            </Link>
+        </GitConnection>
+    </GitConnections>
+
+    <ChangeSet>
+        <AlwaysCreate>false</AlwaysCreate>
+        <NameTemplate>{0} by {1} in {2}</NameTemplate>
+        <NameTemplateDateFormat>yyyy-MM-dd HH:mm:ss</NameTemplateDateFormat>
+        <NameTemplateRepositoryFormat>FoldersOnly</NameTemplateRepositoryFormat>
+        <ChangeComment>Imported by the Git integration service</ChangeComment>
+        <ReferenceAttribute>Number</ReferenceAttribute>
+        <ReferenceExpression><![CDATA[[A-Z]{1,2}-[0-9]+]]></ReferenceExpression>
+    </ChangeSet>
+
+</Configuration>
