@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+      "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.versionone.git.storage">
+<class name="LastProcessedItem" table="LastProcessedItems">
+    <composite-id>
+        <key-property name="repositoryId" column="RepositoryId" length="50"/>
+        <key-property name="branchRef" column="BranchRef" length="255" />
+    </composite-id>
+    <property name="value" column="Value" length="50" />
+</class>
+</hibernate-mapping>

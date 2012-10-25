@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.versionone</groupId>
+  <artifactId>integrations.git</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>VersionOne Git Integration</name>
+  <dependencies>
+
+  	<dependency>
+  		<groupId>org.eclipse.jgit</groupId>
+  		<artifactId>org.eclipse.jgit</artifactId>
+  		<version>2.1.0.201209190230-r</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-api</artifactId>
+  		<version>1.7.2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.logging.log4j.adapters</groupId>
+  		<artifactId>log4j12-api</artifactId>
+  		<version>2.0-beta2</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>com.versionone</groupId>
+  		<artifactId>V1SDK</artifactId>
+  		<version>0.0.1</version>
+  	</dependency>
+  </dependencies>
+</project>

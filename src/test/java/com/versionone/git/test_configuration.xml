@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+
+    <LocalDirectory>e:/gittmp/</LocalDirectory>
+    <PollIntervalInSeconds>300</PollIntervalInSeconds>
+
+    <VersionOneConnection>
+        <Path>http://VersionOne.com/VersionOne/</Path>
+        <UserName>admin</UserName>
+        <Password>adminpass</Password>
+        <IntegratedAuth>true</IntegratedAuth>
+        <ProxySettings>
+            <UseProxy>false</UseProxy>
+            <Path>http://proxy:3128/</Path>
+            <UserName>proxyUser</UserName>
+            <Password>proxyUserPass</Password>
+        </ProxySettings>
+    </VersionOneConnection>
+
+    <GitConnections>
+
+        <!-- External GitHub server -->
+        <GitConnection>
+            <Path>github.com/account/repo.git</Path>
+            <Password>password</Password>
+            <SshPassphrase>passphrase</SshPassphrase>
+            <WatchedBranchName>master</WatchedBranchName>
+            <UseBranchName>false</UseBranchName>
+            <Link>
+                <NameTemplate>ChangeSet: {0}</NameTemplate>
+                <UrlTemplate>https://github.com/account/repo/{0}</UrlTemplate>
+                <OnMenu>true</OnMenu>
+            </Link>
+        </GitConnection>
+
+        <!-- Internal Git server scanning all branches and linking to Gitosis for commit diffs -->
+        <GitConnection>
+            <Path>git@git.yourcompany.com:repo.git</Path>
+            <Link>
+                <NameTemplate>ChangeSet: {0}</NameTemplate>
+                <UrlTemplate>http://git.yourcompany.com/?p=repo.git;a=commitdiff;h={0}</UrlTemplate>
+                <OnMenu>true</OnMenu>
+            </Link>
+        </GitConnection>
+
+        <!-- External GitHub server -->
+        <GitConnection>
+            <Path>github.com/account/repo.git</Path>
+            <Password>password</Password>
+            <SshPassphrase>passphrase</SshPassphrase>
+            <WatchedBranchName>master</WatchedBranchName>
+            <UseBranchName>false</UseBranchName>
+            <Link>
+                <NameTemplate>ChangeSet: {0}</NameTemplate>
+                <UrlTemplate>https://github.com/account/repo/{0}</UrlTemplate>
+                <OnMenu>true</OnMenu>
+            </Link>
+        </GitConnection>
+
+    </GitConnections>
+
+    <ChangeSet>
+        <AlwaysCreate>false</AlwaysCreate>
+        <NameTemplate>{0} by {1} in {2}</NameTemplate>
+        <NameTemplateDateFormat>yyyy-MM-dd HH:mm:ss</NameTemplateDateFormat>
+        <NameTemplateRepositoryFormat>FoldersOnly</NameTemplateRepositoryFormat>
+        <ChangeComment>Updated by VersionOne.ServiceHost</ChangeComment>
+        <ReferenceAttribute>Number</ReferenceAttribute>
+        <ReferenceExpression><![CDATA[[A-Z]{1,2}-[0-9]+]]></ReferenceExpression>
+    </ChangeSet>
+
+</Configuration>
